@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/index.css">
+  <title>Hilbert Proof Game</title>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+
+  <header>
+    <h1>Hilbert Proof Game</h1>
+  </header>
+
+  <main>
+
+    <div class="panel">
+
+      <div class="panel-head">
+        <h2>Axioms and Theorems</h2>
+        <p class="panel-desc">Click items to open the substitution folder.</p>
+      </div>
+
+      <div id="left-body">
+        <div class="node-container" id="left-body-proved"></div>
+        <div class="node-container" id="left-body-unproved"></div>
+      </div>
+
+    </div>
+
+    <div class="panel">
+
+      <div class="panel-head">
+        <h2>Proof Derivation</h2>
+        <div id="proof-goal">
+          GOAL: <span id="msg-goal">formula unset</span><span class="formula" id="goal-formula"></span>
+          <button type="button" id="btn-goal">SET</button>
+        </div>
+      </div>
+
+      <div id="right-body">
+        <h3>Proof</h3>
+        <div id="proof-container">
+          <p id="msg-start">add an axiom or a theorem to start proof...</p>
+          <div class="node-container" id="proof-box"></div>
+        </div>
+        <div id="proof-foot">
+          <button type="button" id="btn-mp">Apply Modus Ponens: <span class="formula">A, A → B ⊢ B</span></button>
+        </div>
+      </div>
+
+      <div id="right-foot" hidden>
+        <h2>Goal Achieved!</h2>
+        <p>You have successfully proven the formula: <span class="formula" id="regist-formula"></span></p>
+        <div class="formula"></div>
+        <p>Register this formula as a new theorem?</p>
+        <button type="button" id="btn-regist">regist</button>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+
+</html>

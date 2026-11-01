@@ -1,0 +1,401 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100dvh;
+  width: 100dvw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: navy;
+  color: white;
+}
+
+h1 {
+  margin: 6px 12px;
+}
+
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 0;
+}
+
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 6px;
+  padding: 6px;
+}
+
+h2 {
+  margin: 6px;
+}
+
+.panel-desc {
+  margin: 0 6px;
+  color: grey;
+}
+
+
+#left-body {
+  flex: 1;
+  background-color: lightgrey;
+  border-radius: 6px;
+  padding: 3px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.node-container {
+  display: grid;
+  gap: 3px;
+}
+
+.node {
+  display: grid;
+  grid-template-rows: max-content 0fr;
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  padding: 6px;
+  background-color: white;
+  transition: grid-template-rows .3s ease;
+}
+
+.node.opened {
+  grid-template-rows: max-content 1fr;
+}
+
+.node:hover {
+  background-color: lightcyan;
+}
+
+.node-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+  cursor: pointer;
+  transition: color .1s ease;
+}
+
+/*
+.node-head:hover {
+  background: lightgrey;
+}*/
+
+.tag {
+  border-radius: 3px;
+  padding: 3px 6px;
+  color: white;
+  font-family: Consolas, monospace;
+}
+
+.ax-tag {
+  background: blue;
+}
+
+.th-tag {
+  background: green;
+}
+
+.preview {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.arrow {
+  color: grey;
+  transform-origin: 80% 70%;
+  transition: transform .3s ease, color .1s ease;
+}
+
+.node-head:hover .arrow {
+  color: black;
+}
+
+.node.opened .arrow {
+  transform: rotate(90deg) translateY(7px);
+}
+
+
+.node-folder {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.form-group {
+  display: flex;
+  gap: 6px;
+  margin: 3px;
+  align-items: center;
+}
+
+.form-group label {
+  width: 12px;
+  text-align: right;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 2px solid darkgrey;
+  border-radius: 4px;
+  outline: none;
+  font-family: Consolas, monospace;
+  transition: border-color .1s ease;
+}
+
+.form-group input:focus {
+  border-color: gray;
+}
+
+.btn-subst {
+  align-self: flex-end;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  transform-origin: 80% 70%;
+  transition: color .1s ease, transform .1s ease;
+}
+
+.btn-subst:hover {
+  background: darkblue;
+}
+
+.btn-subst:active {
+  transform: scale(.95);
+}
+
+
+#btn-goal {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: green;
+  color: white;
+  transform-origin: 80% 70%;
+  transition: background-color .1s ease, transform .1s, ease;
+}
+
+#btn-goal:hover {
+  background-color: darkgreen;
+}
+
+#btn-goal:active {
+  transform: scale(.95);
+}
+
+
+#right-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 3px;
+  min-height: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+
+#proof-container {
+  flex: 1;
+  border: 2px solid darkgrey;
+  border-radius: 12px;
+  padding: 8px;
+  min-height: 0;
+  overflow: auto;
+}
+
+#msg-start {
+  text-align: center;
+  color: grey;
+}
+
+.node-step {
+  display: flex;
+  align-items: center;
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  transition: color .1s ease, background-color .1s ease;
+}
+
+.node-step:hover {
+  border-color: darkgrey;
+}
+
+.node-step.selected {
+  background: lightblue;
+}
+
+.just-tag {
+  border-radius: 4px;
+  padding: 3px 6px;
+  background: lightgrey;
+  font-family: Consolas, monospace;
+  transition: background-color .1s ease, color .1s ease;
+}
+
+.copy {
+  margin: 0 6px;
+  position: relative;
+}
+
+.popup {
+  position: absolute;
+  border: 2px solid mediumseagreen;
+  border-radius: 6px;
+  padding: 3px;
+  background-color: white;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-step.selected .just-tag {
+  background-color: deepskyblue;
+  color: white;
+}
+
+#proof-foot {
+  align-self: flex-end;
+}
+
+#proof-foot button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  transform-origin: 80% 70%;
+  transition: background-color .1s ease, color .1s ease, transform .1s, ease;
+}
+
+#proof-foot button:disabled {
+  background: lightgrey;
+  color: grey;
+}
+
+#proof-foot button:not(:disabled) {
+  background: grey;
+  color: white;
+  cursor: pointer;
+}
+
+#proof-foot button:not(:disabled):hover {
+  background: darkgrey;
+}
+
+#proof-foot button:not(:disabled):active {
+  transform: scale(.95);
+}
+
+
+#right-foot {
+  display: flex;
+  flex-direction: column;
+}
+
+#btn-regist {
+  align-self: flex-end;
+  margin: 6px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  background: blue;
+  font-size: medium;
+  color: white;
+  cursor: pointer;
+  transform-origin: 80% 70%;
+  transition: color .1s ease, transform .1s ease;
+}
+
+#btn-regist:hover {
+  background: darkblue;
+}
+
+#btn-regist:active {
+  transform: scale(.95);
+}
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 30px;
+  height: 30%;
+  width: 50%;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, .6);
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+dialog form input {
+  padding: 6px 8px;
+  border: 2px solid darkgrey;
+  border-radius: 4px;
+  outline: none;
+  font-family: Consolas, monospace;
+  transition: border-color .1s ease;
+}
+
+dialog form input:focus {
+  border-color: grey;
+}
+
+.buttons {
+  align-self: flex-end;
+}
+
+.buttons button {
+  align-self: flex-end;
+  margin: 6px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  background: blue;
+  font-size: medium;
+  color: white;
+  cursor: pointer;
+  transform-origin: 80% 70%;
+  transition: color .1s ease, transform .1s ease;
+}
+
+.buttons button:hover {
+  background: darkblue;
+}
+
+.buttons button:active {
+  transform: scale(.95);
+}
+
+.formula {
+  font-family: math, serif;
+}
+
+[hidden] {
+  display: none !important;
+}
