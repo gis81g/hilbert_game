@@ -17,21 +17,28 @@
 
   <main>
 
-    <div class="panel">
+    <div id="left-panel">
 
-      <div class="panel-head">
-        <h2>Axioms and Theorems</h2>
-        <p class="panel-desc">Click items to open the substitution folder.</p>
-      </div>
+      <input type="checkbox" id="fold">
+      <label for="fold" id="fold-arrow"></label>
 
-      <div id="left-body">
-        <div class="node-container" id="left-body-proved"></div>
-        <div class="node-container" id="left-body-unproved"></div>
+      <div class="panel" id="left-content">
+
+        <div class="panel-head">
+          <h2>Axioms and Theorems</h2>
+          <p class="panel-desc">Click items to open the substitution folder.</p>
+        </div>
+
+        <div id="left-body">
+          <div class="node-container" id="left-body-proved"></div>
+          <div class="node-container" id="left-body-unproved"></div>
+        </div>
+
       </div>
 
     </div>
 
-    <div class="panel">
+    <div class="panel" id="right-panel">
 
       <div class="panel-head">
         <h2>Proof Derivation</h2>

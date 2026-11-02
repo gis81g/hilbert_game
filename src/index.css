@@ -18,20 +18,84 @@ h1 {
   margin: 6px 12px;
 }
 
+#fold {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
 main {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(240px, 1fr) 2fr;
   min-height: 0;
+  transition: grid-template-columns 1s ease;
 }
 
+#fold-arrow {
+  position: absolute;
+  top: 0;
+  right: -6px;
+  margin: 6px;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-family: Consolas, monospase;
+  font-size: large;
+  color: grey;
+  transform: scaleY(1.5);
+  cursor: pointer;
+  transition: background-color .3s ease;
+}
+
+#fold-arrow:hover {
+  background-color: rgba(169, 169, 169, .6);
+}
+
+#fold-arrow::before {
+  right: 0;
+  content: "<<";
+}
+
+main:has(#fold:checked) {
+  grid-template-columns: 30px minmax(0, 1fr);
+}
+
+main:has(#fold:checked) #left-content {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+#fold:checked + #fold-arrow::before {
+  content: ">>";
+}
 
 .panel {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  min-width: 0;
   gap: 6px;
   padding: 6px;
+}
+
+#left-panel {
+  position: relative;
+  border-right: 2px solid grey;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#left-content {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: opacity 1s ease, max-width 1s ease;
+  max-width: 100%;
+  overflow: auto;
+  opacity: 1;
 }
 
 h2 {
@@ -231,10 +295,12 @@ h3 {
 
 .node-step {
   display: flex;
+  gap: 6px;
   align-items: center;
   border: 2px solid lightgrey;
   border-radius: 6px;
   padding: 6px;
+  min-width: 0;
   cursor: pointer;
   transition: color .1s ease, background-color .1s ease;
 }
@@ -256,7 +322,6 @@ h3 {
 }
 
 .copy {
-  margin: 0 6px;
   position: relative;
 }
 

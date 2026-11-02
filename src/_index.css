@@ -322,6 +322,21 @@ h3 {
   align-self: flex-end;
 }
 
+/*
+.node {
+  display: grid;
+  grid-template-rows: max-content 0fr;
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  padding: 6px;
+  background-color: white;
+  transition: grid-template-rows .3s ease;
+}
+
+.node.opened {
+  grid-template-rows: max-content 1fr;
+}*/
+
 #form-goal button {
   border: none;
   border-radius: 4px;
